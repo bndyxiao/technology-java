@@ -6,7 +6,7 @@ package com.technology.util;
  * @Date: 2018年11月19日 09:00:44
  * @Description:
  */
-public class MapToolUtil {
+public class MapUtil {
 
 
     /**
