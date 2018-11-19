@@ -1,2 +1,19 @@
 server:
-  port: 8080
+  port: 9080
+spring:
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+  datasource:
+    url: jdbc:mysql://localhost:3306/bbx_test
+    username: root
+    password: xiao512
+    driver-class-name: com.mysql.jdbc.Driver
+    hikari:
+      idle-timeout: 60000
+      maximum-pool-size: 30
+      minimum-idle: 10
+mybatis:
+  type-aliases-package: com.technology.pojo
+  mapper-locations: classpath:mappers/*.xml
