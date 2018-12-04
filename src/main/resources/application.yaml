@@ -17,3 +17,7 @@ spring:
 mybatis:
   type-aliases-package: com.technology.pojo
   mapper-locations: classpath:mappers/*.xml
+
+# 日志
+logging.path=d:/data/mylog
+logging.file=myLog.log

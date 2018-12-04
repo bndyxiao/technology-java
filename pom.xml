@@ -15,7 +15,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!--指定Maven用什么编码来呈现站点的HTML文件 -->
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<jdk.version>1.7</jdk.version>
+		<jdk.version>1.8</jdk.version>
 	</properties>
 
 	<parent>
@@ -89,5 +89,17 @@
 
 	</dependencies>
 
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>
