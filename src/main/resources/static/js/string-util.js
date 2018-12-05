@@ -17,3 +17,16 @@ function checkLatitude(value){
     }
     return true;
 };
+
+/**
+ * 过滤文件名的特殊字符
+ * @param s
+ * @returns {string}
+ */
+function stripFileName(fileName) {
+    // var pattern = new RegExp("[`~!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）&;—|{}【】‘；：”“'。，、？]")
+    var pattern = new RegExp(/'|#|&|\\|\/|:|\?|"|<|>|\*|\|/g);
+    fileName = fileName.replaceAll(pattern, "");
+
+    return fileName;
+}
