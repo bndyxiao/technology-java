@@ -33,7 +33,7 @@ public class BrandServiceImpl implements BrandService {
         try {
             list = brandMapper.select(new Brand());
         } catch (Exception e) {
-            log.error("查询列表错误：{0}", e);
+            log.error("查询列表错误：{}", e.getMessage());
             throw new CommonException(ExceptionEnum.INTERNAL_ERROR);
         }
 

@@ -1,9 +1,8 @@
 package com.technology.filter.xssattack;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -20,8 +19,8 @@ import java.util.regex.Pattern;
  * @Date: 2018年11月19日 11:28:25
  * @Description:
  */
+@Slf4j
 public class XssFilter implements Filter {
-    private static final Logger logger = LoggerFactory.getLogger(XssFilter.class);
 
     /**
      * 是否过滤富文本内容
@@ -32,8 +31,8 @@ public class XssFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException,ServletException {
-        if(logger.isDebugEnabled()){
-            logger.debug("xss filter is open");
+        if(log.isDebugEnabled()){
+            log.debug("xss filter is open");
         }
 
         HttpServletRequest req = (HttpServletRequest) request;
@@ -67,8 +66,8 @@ public class XssFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        if(logger.isDebugEnabled()){
-            logger.debug("xss filter init ====================");
+        if(log.isDebugEnabled()){
+            log.debug("xss filter init ====================");
         }
         String isIncludeRichText = filterConfig.getInitParameter("isIncludeRichText");
         if(StringUtils.isNotBlank(isIncludeRichText)){
