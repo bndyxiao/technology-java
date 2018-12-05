@@ -28,8 +28,15 @@ public class BrandServiceImpl implements BrandService {
     @Override
     public List<Brand> queryBrandList() {
 
+        List<Brand> list = null;
 
-        List<Brand> list = brandMapper.selectAll();
+        try {
+            list = brandMapper.select(new Brand());
+        } catch (Exception e) {
+            log.error("查询列表错误：{0}", e);
+            throw new CommonException(ExceptionEnum.INTERNAL_ERROR);
+        }
+
 
         if (CollectionUtils.isEmpty(list)) {
             throw new CommonException(ExceptionEnum.BRAND_NO_FOUND);

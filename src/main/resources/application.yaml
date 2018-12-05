@@ -6,14 +6,16 @@ spring:
     prefix: classpath:/templates/
     suffix: .html
   datasource:
-    url: jdbc:mysql://localhost:3306/bbx_test?characterEncoding=utf8&characterSetResults=utf8&autoReconnect=true&failOverReadOnly=false
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: xiao512
-    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/bbx_test?characterEncoding=utf8&characterSetResults=utf8&autoReconnect=true&failOverReadOnly=false
     hikari:
       idle-timeout: 60000
       maximum-pool-size: 30
       minimum-idle: 10
+      pool-name: DatebookHikariCP
 mybatis:
   type-aliases-package: com.technology.pojo
   mapper-locations: classpath:mappers/*.xml

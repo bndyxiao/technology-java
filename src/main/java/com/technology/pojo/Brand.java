@@ -22,7 +22,7 @@ public class Brand implements Serializable {
     private String name;
 
     //@Column(name = "`desc`")
-    // private String desc;
+    //private String desc;
 
     public Integer getId() {
         return id;
