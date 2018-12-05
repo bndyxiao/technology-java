@@ -21,8 +21,8 @@ public class Brand implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "desc")
-    private String desc;
+    //@Column(name = "`desc`")
+    // private String desc;
 
     public Integer getId() {
         return id;
@@ -40,11 +40,11 @@ public class Brand implements Serializable {
         this.name = name;
     }
 
-    public String getDesc() {
+    /*public String getDesc() {
         return desc;
     }
 
     public void setDesc(String desc) {
         this.desc = desc;
-    }
+    }*/
 }

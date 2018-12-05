@@ -102,7 +102,6 @@ public class HomeController {
             brand = new Brand();
             brand.setId(i + 1);
             brand.setName(brands[i]);
-            brand.setDesc(descs[i]);
 
             list.add(brand);
         }

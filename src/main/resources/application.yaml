@@ -6,7 +6,7 @@ spring:
     prefix: classpath:/templates/
     suffix: .html
   datasource:
-    url: jdbc:mysql://localhost:3306/bbx_test
+    url: jdbc:mysql://localhost:3306/bbx_test?characterEncoding=utf8&characterSetResults=utf8&autoReconnect=true&failOverReadOnly=false
     username: root
     password: xiao512
     driver-class-name: com.mysql.jdbc.Driver
@@ -19,5 +19,9 @@ mybatis:
   mapper-locations: classpath:mappers/*.xml
 
 # 日志
-logging.path=d:/data/mylog
-logging.file=myLog.log
+logging:
+  pattern:
+    console: "%d - %msg%n"
+  file: /var/log/info.log
+  level:
+    com.technology: debug
