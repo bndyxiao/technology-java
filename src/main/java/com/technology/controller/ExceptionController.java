@@ -33,5 +33,4 @@ public class ExceptionController {
     public ResponseEntity<List<Brand>> testException(HttpServletRequest request) {
         return ResponseEntity.ok(brandService.queryBrandList());
     }
-
 }
