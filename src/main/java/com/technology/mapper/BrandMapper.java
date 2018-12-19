@@ -7,7 +7,7 @@ import com.technology.pojo.Brand;
  * @Date: 2018年11月19日 14:41:14
  * @Description:
  */
-public interface BrandMapper extends tk.mybatis.mapper.common.Mapper<Brand>{
+public interface BrandMapper extends BaseMapper<Brand, Integer>{
 
 
 }
