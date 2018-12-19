@@ -74,6 +74,24 @@ maven打包完成后，把war包部署到tomcat的webapps目录下，启动tomca
 
 
 
+## 项目启动加载缓存
+
+> 通过实现CommandLineRunner接口来实现系统启动后，加载数据库数据
+
+```java
+@Component
+@Order(2) // 系统启动后再加载数据
+@Slf4j
+public class PlatformCacheInitRunner implements CommandLineRunner {
+
+    @Override
+    public void run(String... args) throws Exception {
+		// TODO 加载数据
+    }
+}
+
+```
+
 
 
 

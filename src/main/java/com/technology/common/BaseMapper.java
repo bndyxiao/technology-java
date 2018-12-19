@@ -1,4 +1,4 @@
-package com.technology.mapper;
+package com.technology.common;
 
 import tk.mybatis.mapper.additional.idlist.IdListMapper;
 import tk.mybatis.mapper.common.Mapper;

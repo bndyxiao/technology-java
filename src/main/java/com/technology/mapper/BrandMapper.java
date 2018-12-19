@@ -1,5 +1,6 @@
 package com.technology.mapper;
 
+import com.technology.common.BaseMapper;
 import com.technology.pojo.Brand;
 
 /**
@@ -7,7 +8,7 @@ import com.technology.pojo.Brand;
  * @Date: 2018年11月19日 14:41:14
  * @Description:
  */
-public interface BrandMapper extends BaseMapper<Brand, Integer>{
+public interface BrandMapper extends BaseMapper<Brand, Integer> {
 
 
 }
