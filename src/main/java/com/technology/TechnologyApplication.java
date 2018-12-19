@@ -3,6 +3,8 @@ package com.technology;
 import com.github.pagehelper.PageHelper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import tk.mybatis.spring.annotation.MapperScan;
 
@@ -15,7 +17,7 @@ import java.util.Properties;
  */
 @SpringBootApplication
 @MapperScan(basePackages="com.technology.mapper")
-public class TechnologyApplication {
+public class TechnologyApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         SpringApplication.run(TechnologyApplication.class);
@@ -32,5 +34,10 @@ public class TechnologyApplication {
         properties.setProperty("dialect","mysql");    //配置mysql数据库的方言
         pageHelper.setProperties(properties);
         return pageHelper;
+    }
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return builder.sources(TechnologyApplication.class);
     }
 }
