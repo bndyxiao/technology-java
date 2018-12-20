@@ -30,7 +30,7 @@ public @interface ExcelField {
 	/**
 	 * 导出字段对齐方式（0：自动；1：靠左；2：居中；3：靠右）
 	 */
-	int align() default 0;
+	int align() default 2;
 	
 	/**
 	 * 导出字段字段排序（升序）
@@ -54,4 +54,7 @@ public @interface ExcelField {
 
 	/** 日期格式, 只针对Date日期生效 */
 	String pattern() default "yyyy-MM-dd HH:mm:ss";
+
+	/** 单元格宽度 */
+	int width() default 0;
 }

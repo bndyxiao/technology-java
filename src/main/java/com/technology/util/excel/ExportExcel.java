@@ -67,7 +67,15 @@ public class ExportExcel {
 	public ExportExcel(String title, Class<?> cls){
 		this(title, cls, 1);
 	}
-	
+
+	/**
+	 * 构造函数
+	 * @param cls 实体对象，通过annotation.ExportField获取标题
+	 */
+	public ExportExcel(Class<?> cls) {
+		this(null, cls, 1);
+	}
+
 	/**
 	 * 构造函数
 	 * @param title 表格标题，传“空值”，表示无标题
@@ -173,7 +181,11 @@ public class ExportExcel {
 	 */
 	private void initialize(String title, List<String> headerList) {
 		this.wb = new SXSSFWorkbook(500);
-		this.sheet = wb.createSheet();
+		if (StringUtils.isNotBlank(title)) {
+			this.sheet = wb.createSheet(title);
+		} else {
+			this.sheet = wb.createSheet();
+		}
 		this.styles = createStyles(wb);
 		// Create title
 		if (StringUtils.isNotBlank(title)){
@@ -267,13 +279,13 @@ public class ExportExcel {
 		style.cloneStyleFrom(styles.get("data"));
 //		style.setWrapText(true);
 		style.setAlignment(HorizontalAlignment.CENTER);
-		style.setFillForegroundColor(IndexedColors.GREY_50_PERCENT.getIndex());
+		// style.setFillForegroundColor(IndexedColors.GREY_50_PERCENT.getIndex());
 		style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
 		Font headerFont = wb.createFont();
 		headerFont.setFontName("Arial");
 		headerFont.setFontHeightInPoints((short) 10);
 		headerFont.setBold(true);
-		headerFont.setColor(IndexedColors.WHITE.getIndex());
+		headerFont.setColor(IndexedColors.BLACK.getIndex());
 		style.setFont(headerFont);
 		styles.put("header", style);
 		
@@ -405,7 +417,7 @@ public class ExportExcel {
 				CellStyle style = styles.get("data_column_"+column);
 				if (style == null){
 					style = wb.createCellStyle();
-					style.cloneStyleFrom(styles.get("data"+(align>=1&&align<=3?align:"")));
+					style.cloneStyleFrom(styles.get("data" + ( align>=1 && align <= 3 ? align : "")));
 					style.setDataFormat(wb.createDataFormat().getFormat(cellFormatString));
 					styles.put("data_column_" + column, style);
 				}
@@ -511,7 +523,7 @@ public class ExportExcel {
 
 	private static void exportByBean() {
 
-		ExportExcel exportExcel = new ExportExcel("", Brand.class);
+		ExportExcel exportExcel = new ExportExcel("哈哈哈", Brand.class);
 
 		List<Brand> list = Lists.newArrayList();
 		Brand brand = new Brand();
@@ -520,7 +532,7 @@ public class ExportExcel {
 
 		Test test = new Test();
 
-		test.setAge("120");
+		test.setAge("1200000000000000000dsafdsafdsafdsafdsafdasfdasfdasfdasfdsafs0");
 
 		brand.setTest(test);
 
