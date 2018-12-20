@@ -7,8 +7,6 @@ import java.util.UUID;
 
 /**
  * @Description: 字符串工具类
- * @Author: tdl
- * @CreateDate: 2018/11/14 下午7:45
  **/
 public class StringUtils extends org.apache.commons.lang3.StringUtils {
     /**
@@ -336,5 +334,17 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
             e.printStackTrace();
         }
         return str;
+    }
+
+    /**
+     * 首字母大写
+     * @param name
+     * @return
+     */
+    public static String upperFirstCharName(String name) {
+        char[] cs=name.toCharArray();
+        cs[0]-=32;
+        return String.valueOf(cs);
+
     }
 }
