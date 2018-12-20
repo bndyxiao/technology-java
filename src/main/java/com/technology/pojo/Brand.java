@@ -1,9 +1,11 @@
 package com.technology.pojo;
 
+import com.technology.util.excel.annotation.ExcelField;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author: huangzhb
@@ -18,8 +20,15 @@ public class Brand implements Serializable {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
 
+    @ExcelField(title = "名称")
     @Column(name = "name")
     private String name;
+
+    @ExcelField(title="年龄",value="test.age")
+    private Test test;
+
+    @ExcelField(title = "注册时间", pattern = "yyyy/MM/dd HH:mm:ss")
+    private Date createTime;
 
     public Integer getId() {
         return id;
