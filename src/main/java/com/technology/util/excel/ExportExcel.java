@@ -321,7 +321,7 @@ public class ExportExcel {
 	 * @return 单元格对象
 	 */
 	public Cell addCell(Row row, int column, Object val){
-		return this.addCell(row, column, val, 0, Class.class);
+		return this.addCell(row, column, val, 2, Class.class);
 	}
 	
 	/**
@@ -528,14 +528,14 @@ public class ExportExcel {
 	 */
 	public static void main(String[] args) {
 
-		// exportByString();
+		exportByString();
 
 		exportByBean();
 	}
 
 	private static void exportByBean() {
 
-		ExportExcel exportExcel = new ExportExcel("哈哈哈", Brand.class);
+		ExportExcel exportExcel = new ExportExcel(Brand.class);
 
 		List<Brand> list = Lists.newArrayList();
 		Brand brand = new Brand();
