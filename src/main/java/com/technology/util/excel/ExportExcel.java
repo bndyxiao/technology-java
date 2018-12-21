@@ -363,7 +363,7 @@ public class ExportExcel {
 						"fieldtype."+val.getClass().getSimpleName()+"Type")).getMethod("setValue", Object.class).invoke(null, val));
 				}
 			}
-			if (val != null){
+			//if (val != null){
 				CellStyle style = styles.get("data_column_"+column);
 				if (style == null){
 					style = wb.createCellStyle();
@@ -372,7 +372,7 @@ public class ExportExcel {
 					styles.put("data_column_" + column, style);
 				}
 				cell.setCellStyle(style);
-			}
+			//}
 		} catch (Exception ex) {
 			log.info("Set cell value ["+row.getRowNum()+","+column+"] error: " + ex.toString());
 			cell.setCellValue(val.toString());
@@ -425,7 +425,7 @@ public class ExportExcel {
 							"fieldtype."+val.getClass().getSimpleName()+"Type")).getMethod("setValue", Object.class).invoke(null, val));
 				}
 			}
-			if (val != null){
+			//if (val != null){
 				CellStyle style = styles.get("data_column_"+column);
 				if (style == null){
 					style = wb.createCellStyle();
@@ -434,7 +434,7 @@ public class ExportExcel {
 					styles.put("data_column_" + column, style);
 				}
 				cell.setCellStyle(style);
-			}
+			//}
 		} catch (Exception ex) {
 			log.info("Set cell value ["+row.getRowNum()+","+column+"] error: " + ex.toString());
 			cell.setCellValue(val.toString());
