@@ -2,11 +2,13 @@ package com.technology.controller;
 
 import com.technology.mapper.BrandMapper;
 import com.technology.pojo.Brand;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -35,7 +37,8 @@ public class HomeController {
         return "home";
     }
 
-    @RequestMapping("/queryBrandList")
+    @ApiOperation(value = "品牌列表", notes = "获取品牌列表")
+    @GetMapping("/queryBrandList")
     @ResponseBody
     public Map<String, Object> queryBrandList(HttpServletRequest request) {
 
