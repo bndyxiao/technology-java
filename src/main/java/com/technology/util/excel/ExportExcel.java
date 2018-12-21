@@ -1,6 +1,3 @@
-/**
- * Copyright &copy; 2012-2016 <a href="https://github.com/thinkgem/jeesite">JeeSite</a> All rights reserved.
- */
 package com.technology.util.excel;
 
 
@@ -11,6 +8,7 @@ import com.technology.util.Encodes;
 import com.technology.util.Reflections;
 import com.technology.util.excel.annotation.ExcelField;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
@@ -219,10 +217,24 @@ public class ExportExcel {
 
 			// sheet.autoSizeColumn(i);
 		}
-		for (int i = 0; i < headerList.size(); i++) {  
-			int colWidth = sheet.getColumnWidth(i)*2;
-	        sheet.setColumnWidth(i, colWidth < 3000 ? 3000 : colWidth);  
+
+		// 初始化表头宽度
+		if (CollectionUtils.isNotEmpty(this.annotationList)) {
+
+			int colWidth = 0;
+			for (int i = 0; i < headerList.size(); i++) {
+
+				colWidth = ((ExcelField)(this.annotationList.get(i)[0])).width();
+				colWidth *= 1000;
+				sheet.setColumnWidth(i, colWidth < 3000 ? 3000 : colWidth);
+			}
+		} else {
+			for (int i = 0; i < headerList.size(); i++) {
+				int colWidth = sheet.getColumnWidth(i)*2;
+				sheet.setColumnWidth(i, colWidth < 3000 ? 3000 : colWidth);
+			}
 		}
+
 		log.debug("Initialize success.");
 	}
 	

@@ -24,7 +24,7 @@ public class Brand implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @ExcelField(title="年龄",value="test.age")
+    @ExcelField(title="年龄",value="test.age", width = 4)
     private Test test;
 
     @ExcelField(title = "注册时间", pattern = "yyyy/MM/dd HH:mm:ss")

@@ -55,6 +55,6 @@ public @interface ExcelField {
 	/** 日期格式, 只针对Date日期生效 */
 	String pattern() default "yyyy-MM-dd HH:mm:ss";
 
-	/** 单元格宽度 */
+	/** 单元格宽度 比如单元格要求3000， 那么width=3，默认最小单元格宽度为3000*/
 	int width() default 0;
 }
