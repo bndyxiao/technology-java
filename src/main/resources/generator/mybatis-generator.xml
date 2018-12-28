@@ -52,7 +52,8 @@
 
         <!-- 配置要生成的表名、实体名 -->
         <!--对应数据库表 mysql可以加入主键自增 字段命名 忽略某字段等 -->
-        <table tableName="car" domainObjectName="Car" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" />
+        <table tableName="directory_catalog" domainObjectName="directoryCatalog" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" />
+        <table tableName="directory_item" domainObjectName="directoryItem" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" />
 
     </context>
 </generatorConfiguration>
