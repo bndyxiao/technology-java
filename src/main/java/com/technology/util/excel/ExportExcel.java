@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -356,8 +357,8 @@ public class ExportExcel {
 					cell.setCellValue((Float) val);
 					cellFormatString = "0.00";
 				}else if(val instanceof Date) {
-					cell.setCellValue((Date) val);
 					cellFormatString = "yyyy-MM-dd HH:mm";
+					cell.setCellValue(formatDate((Date) val, cellFormatString));
 				}else {
 					cell.setCellValue((String)Class.forName(this.getClass().getName().replaceAll(this.getClass().getSimpleName(), 
 						"fieldtype."+val.getClass().getSimpleName()+"Type")).getMethod("setValue", Object.class).invoke(null, val));
@@ -418,7 +419,7 @@ public class ExportExcel {
 					cell.setCellValue((Float) val);
 					cellFormatString = "0.00";
 				}else if(val instanceof Date) {
-					cell.setCellValue((Date) val);
+					cell.setCellValue(formatDate((Date) val, pattern));
 					cellFormatString = pattern;
 				}else {
 					cell.setCellValue((String)Class.forName(this.getClass().getName().replaceAll(this.getClass().getSimpleName(),
@@ -600,6 +601,18 @@ public class ExportExcel {
 		ee.dispose();
 
 		log.debug("Export success.");
+	}
+
+	private static String formatDate(Date date, String pattern) {
+
+		try {
+			SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+			String time = sdf.format(date.getTime());
+			return time;
+		} catch(Exception e) {
+			log.error("日期转换出错:{0}", e.getMessage());
+			return "";
+		}
 	}
 
 }
