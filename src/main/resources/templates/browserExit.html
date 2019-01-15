@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浏览器非正常关闭退出</title>
+    <script type="text/javascript">
+        function exitLogin() {
+            byebye();
+            return undefined;
+        };
+        function byebye() {
+            $.ajax({
+                type:"POST",
+                url : ctx + "/login.do?method=loginout",
+                beforeSend:function(){
+                    console.log("执行退出按钮....");
+                },
+                success:function(data){
+                    console.log(data);
+                }
+            })
+        }
+    </script>
+</head>
+<body onbeforeunload="return exitLogin();">
+
+</body>
+</html>
