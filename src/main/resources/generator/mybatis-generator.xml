@@ -22,9 +22,15 @@
 
         <!--数据库连接 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://bbx-testdb-out.mysql.rds.aliyuncs.com:3306/bbx_test?characterEncoding=utf-8&amp;autoReconnect=true&amp;zeroDateTimeBehavior=convertToNull"
+                        userId="bbx_root"
+                        password="LHBbx#2017@15">
+        </jdbcConnection>
+
+<!--        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://127.0.0.1:3306/bbx_test" userId="root"
                         password="xiao512">
-        </jdbcConnection>
+        </jdbcConnection>-->
         <!--默认false Java type resolver will always use java.math.BigDecimal if
             the database column is of type DECIMAL or NUMERIC. -->
         <javaTypeResolver>
@@ -52,8 +58,9 @@
 
         <!-- 配置要生成的表名、实体名 -->
         <!--对应数据库表 mysql可以加入主键自增 字段命名 忽略某字段等 -->
-        <table tableName="directory_catalog" domainObjectName="directoryCatalog" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" />
-        <table tableName="directory_item" domainObjectName="directoryItem" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" />
+        <table tableName="bill_main_company" domainObjectName="BillMainCompany" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" />
+        <table tableName="bill_motorcade_config" domainObjectName="BillMotorcadeConfig" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" />
+        <table tableName="bill_config" domainObjectName="BillConfig" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" />
 
     </context>
 </generatorConfiguration>
