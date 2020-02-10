@@ -43,3 +43,19 @@ function replaceIllegalNumber(obj) {
     //只能输入两个小数
     obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3');
 };
+
+/**
+ * 价格格式化允许输入1位小数, 最大值99999
+ */
+function formatPrice() {
+    var obj = $(this);
+    obj.val(obj.val().replace(/[^\d.]/g,""));  //清除“数字”和“.”以外的字符
+    obj.val(obj.val().replace(/^\./g,"")); //验证第一个字符是数字
+    obj.val(obj.val().replace(/\.{2,}/g,".")); //只保留第一个. 清除多余的
+    obj.val(obj.val().replace(".","$#$").replace(/\./g,"").replace("$#$","."));
+    obj.val(obj.val().replace(/^(\d{1,5})\.(\d).*$/,'$1.$2'));//只能输入1个小数
+    obj.val(obj.val().replace(/^(\d{5}).*$/,'$1'));// 限制输入的是整数
+    if(obj.val().indexOf(".")< 0 && obj.val() !=""){//以上已经过滤，此处控制的是如果没有小数点，首位不能为类似于 01、02的金额
+        obj.val(parseFloat(obj.val()));
+    }
+}
