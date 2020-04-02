@@ -1,7 +1,7 @@
 package common.apigateway;
 
-import org.apache.shiro.util.Assert;
 import org.springframework.context.ApplicationContext;
+import org.springframework.util.Assert;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

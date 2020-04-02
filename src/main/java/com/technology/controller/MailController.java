@@ -1,0 +1,38 @@
+package com.technology.controller;
+
+import com.alibaba.fastjson.JSONObject;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+/**
+ * @Description:
+ * @Author: huangzhb
+ * @Date: 2020/4/2 16:19
+ * @Version: 1.0
+ * @Copyright: (C) Copyright 2020-2034, 蓝海(福建)信息科技有限公司
+ */
+@RestController
+@Slf4j
+public class MailController {
+
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
+    @Autowired
+    private Environment env;
+
+    @GetMapping("/send")
+    public JSONObject sendMail() {
+
+        rabbitTemplate.setExchange(env.getProperty("mail.exchange.name"));
+        rabbitTemplate.setRoutingKey(env.getProperty("mail.routing.key.name"));
+        rabbitTemplate.convertAndSend("发送给张三的邮件");
+        log.info("邮件发送完毕");
+
+        return new JSONObject();
+    }
+
+}

@@ -3,6 +3,7 @@ package com.technology;
 import com.github.pagehelper.PageHelper;
 import org.redisson.Redisson;
 import org.redisson.config.Config;
+import org.springframework.amqp.core.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -45,7 +46,9 @@ public class TechnologyApplication extends SpringBootServletInitializer {
 
 
 
-    @Bean
+
+
+    /*@Bean
     Redisson redissonSentinel() {
 
         // 支持单机，主从，哨兵，集群等模式
@@ -59,5 +62,5 @@ public class TechnologyApplication extends SpringBootServletInitializer {
         config.useSingleServer().setAddress("127.0.0.1:6379");
 
         return (Redisson) Redisson.create(config);
-    }
+    }*/
 }

@@ -10,7 +10,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: xiao512
-    url: jdbc:mysql://localhost:3306/bbx_test?useSSL=false&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8
+    url: jdbc:mysql://localhost:3306/test?useSSL=false&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8
     hikari:
       idle-timeout: 60000
       maximum-pool-size: 30
@@ -22,6 +22,22 @@ spring:
     time-zone: GMT+8
   profiles:
     active: @profileActive@
+  application:
+    name: springboot-rabbitmq
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    publisher-confirms: true
+    virtual-host: /
+    listener:
+      simple:
+        concurrency: 10
+        max-concurrency: 20
+        prefetch: 5
+    # 并发量配置
+
 mybatis:
   type-aliases-package: com.technology.pojo
   mapper-locations: classpath:mappers/*.xml

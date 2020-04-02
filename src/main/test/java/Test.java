@@ -58,7 +58,7 @@ public class Test {
         }
 
         // 定义标题和sheet名称
-        ExportParams exportParams = new ExportParams("", "人员数据");
+        ExportParams exportParams = new ExportParams("test1","");
         Workbook workbook = ExcelExportUtil.exportExcel(exportParams, columnList, dataList);
         // 导入到本地目录，如果需要从浏览器导出，参看上一篇文章
         FileOutputStream fos  = null;

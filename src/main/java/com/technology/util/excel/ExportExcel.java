@@ -541,13 +541,13 @@ public class ExportExcel {
 		List<Brand> list = Lists.newArrayList();
 		Brand brand = new Brand();
 		brand.setName("张三");
-		brand.setCreateTime(new Date());
+		//brand.setCreateTime(new Date());
 
 		Test test = new Test();
 
 		test.setAge("1200000000000000000dsafdsafdsafdsafdsafdasfdasfdasfdasfdsafs0");
 
-		brand.setTest(test);
+		//brand.setTest(test);
 
 		list.add(brand);
 

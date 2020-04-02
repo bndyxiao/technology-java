@@ -323,6 +323,13 @@
             <version>3.0.1</version>
         </dependency>
 		<!-- 开发指南 https://opensource.afterturn.cn/doc/easypoi.html -->
+
+		<dependency>
+			<groupId>org.apache.zookeeper</groupId>
+			<artifactId>zookeeper</artifactId>
+			<version>3.5.0-alpha</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

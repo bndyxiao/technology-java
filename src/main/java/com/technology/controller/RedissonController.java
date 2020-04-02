@@ -18,9 +18,9 @@ import java.util.concurrent.TimeUnit;
  * @Date: 2019年03月18日 09:54:33
  * @Description:
  */
-@RestController
-@RequestMapping("/redisson")
-@Slf4j
+//@RestController
+//@RequestMapping("/redisson")
+//@Slf4j
 public class RedissonController {
 
     @Autowired
