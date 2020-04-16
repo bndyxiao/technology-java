@@ -9,7 +9,10 @@ import com.technology.pojo.User;
  */
 public interface UserService {
 
+
     User findUserById(Integer id);
 
-    User findUserByUsername(String username);
+    User slaveById(Integer id);
+
+    User defaultById(Integer id);
 }

@@ -1,14 +1,16 @@
 package com.technology;
 
 import com.github.pagehelper.PageHelper;
-import org.redisson.Redisson;
-import org.redisson.config.Config;
-import org.springframework.amqp.core.*;
+import com.technology.dynamic.DynamicDataSourceConfig;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 import tk.mybatis.spring.annotation.MapperScan;
 
 import java.util.Properties;
@@ -18,8 +20,9 @@ import java.util.Properties;
  * @Date: 2018年11月13日 18:00:15
  * @Description:
  */
-@SpringBootApplication
+@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
 @MapperScan(basePackages="com.technology.mapper")
+@Import({DynamicDataSourceConfig.class})
 public class TechnologyApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {

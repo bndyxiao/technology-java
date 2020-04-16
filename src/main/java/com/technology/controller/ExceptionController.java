@@ -25,12 +25,13 @@ import java.util.List;
 public class ExceptionController {
 
 
-    @Autowired
-    private BrandService brandService;
+    //@Autowired
+    //private BrandService brandService;
 
 
     @GetMapping("page")
     public ResponseEntity<List<Brand>> testException(HttpServletRequest request) {
-        return ResponseEntity.ok(brandService.queryBrandList());
+        //return ResponseEntity.ok(brandService.queryBrandList());
+        return null;
     }
 }

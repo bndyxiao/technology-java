@@ -19,7 +19,7 @@ import java.io.UnsupportedEncodingException;
  * @Version: 1.0
  * @Copyright: (C) Copyright 2020-2034, 蓝海(福建)信息科技有限公司
  */
-@Component
+//@Component
 @Slf4j
 public class CommonMqListener {
 

@@ -2,7 +2,6 @@ package com.technology.service.impl;
 
 import com.technology.exception.CommonException;
 import com.technology.exception.ExceptionEnum;
-import com.technology.mapper.BrandMapper;
 import com.technology.pojo.Brand;
 import com.technology.service.BrandService;
 import lombok.extern.slf4j.Slf4j;
@@ -21,8 +20,8 @@ import java.util.List;
 @Service
 public class BrandServiceImpl implements BrandService {
 
-    @Autowired
-    private BrandMapper brandMapper;
+    //@Autowired
+    //private BrandMapper brandMapper;
 
 
     @Override
@@ -31,7 +30,7 @@ public class BrandServiceImpl implements BrandService {
         List<Brand> list = null;
 
         try {
-            list = brandMapper.select(new Brand());
+            //list = brandMapper.select(new Brand());
         } catch (Exception e) {
             log.error("查询列表错误：{}", e.getMessage());
             throw new CommonException(ExceptionEnum.INTERNAL_ERROR);

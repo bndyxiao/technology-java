@@ -16,6 +16,7 @@
 		<!--指定Maven用什么编码来呈现站点的HTML文件 -->
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<jdk.version>1.8</jdk.version>
+		<bitwalker.version>1.21</bitwalker.version>
 	</properties>
 
 	<parent>
@@ -328,6 +329,17 @@
 			<groupId>org.apache.zookeeper</groupId>
 			<artifactId>zookeeper</artifactId>
 			<version>3.5.0-alpha</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>eu.bitwalker</groupId>
+			<artifactId>UserAgentUtils</artifactId>
+			<version>${bitwalker.version}</version>
 		</dependency>
 
 	</dependencies>

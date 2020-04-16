@@ -6,16 +6,28 @@ spring:
     prefix: classpath:/templates/
     suffix: .html
   datasource:
-    type: com.zaxxer.hikari.HikariDataSource
-    driver-class-name: com.mysql.jdbc.Driver
-    username: root
-    password: xiao512
-    url: jdbc:mysql://localhost:3306/test?useSSL=false&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8
-    hikari:
-      idle-timeout: 60000
-      maximum-pool-size: 30
-      minimum-idle: 10
-      pool-name: DatebookHikariCP
+#    type: com.zaxxer.hikari.HikariDataSource
+#    driver-class-name: com.mysql.jdbc.Driver
+#    username: root
+#    password: xiao512
+#    url: jdbc:mysql://localhost:3306/test?useSSL=false&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8
+#    hikari:
+#      idle-timeout: 60000
+#      maximum-pool-size: 30
+#      minimum-idle: 10
+#      pool-name: DatebookHikariCP
+    master:
+      driver-class-class: com.mysql.jdbc.Driver
+      type: com.zaxxer.hikari.HikariDataSource
+      jdbcUrl: jdbc:mysql://localhost:3306/test?serverTimezone=GMT%2B8
+      username: root
+      password: xiao512
+    slave:
+      driver-class-class: com.mysql.jdbc.Driver
+      type: com.zaxxer.hikari.HikariDataSource
+      jdbcUrl: jdbc:mysql://localhost:3306/timo?serverTimezone=GMT%2B8
+      username: root
+      password: xiao512
   # 设置json
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
@@ -24,18 +36,18 @@ spring:
     active: @profileActive@
   application:
     name: springboot-rabbitmq
-  rabbitmq:
-    host: 127.0.0.1
-    port: 5672
-    username: guest
-    password: guest
-    publisher-confirms: true
-    virtual-host: /
-    listener:
-      simple:
-        concurrency: 10
-        max-concurrency: 20
-        prefetch: 5
+#  rabbitmq:
+#    host: 127.0.0.1
+#    port: 5672
+#    username: guest
+#    password: guest
+#    publisher-confirms: true
+#    virtual-host: /
+#    listener:
+#      simple:
+#        concurrency: 10
+#        max-concurrency: 20
+#        prefetch: 5
     # 并发量配置
 
 mybatis:

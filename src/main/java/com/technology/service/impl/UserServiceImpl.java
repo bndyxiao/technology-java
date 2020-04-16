@@ -1,11 +1,8 @@
 package com.technology.service.impl;
 
-import com.technology.exception.CommonException;
-import com.technology.exception.ExceptionEnum;
 import com.technology.mapper.UserMapper;
 import com.technology.pojo.User;
 import com.technology.service.UserService;
-import com.technology.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,20 +18,21 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
+
+    @com.technology.dynamic.DataSource(name = "master")
     @Override
     public User findUserById(Integer id) {
-        return userMapper.selectByPrimaryKey(id);
+        return userMapper.findUserById(id);
+    }
+
+    @com.technology.dynamic.DataSource(name = "slave")
+    @Override
+    public User slaveById(Integer id) {
+        return userMapper.slaveById(id);
     }
 
     @Override
-    public User findUserByUsername(String username) {
-
-        if (StringUtils.isBlank(username)) {
-            throw new CommonException(ExceptionEnum.BAD_REQUEST);
-        }
-
-        User user = new User();
-        user.setUsername(username);
-        return userMapper.selectOne(user);
+    public User defaultById(Integer id) {
+        return userMapper.defaultById(id);
     }
 }

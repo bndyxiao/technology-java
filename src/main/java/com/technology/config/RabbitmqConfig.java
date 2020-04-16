@@ -24,7 +24,7 @@ import org.springframework.core.env.Environment;
  * @Copyright: (C) Copyright 2020-2034, 蓝海(福建)信息科技有限公司
  */
 @Slf4j
-@Configuration
+//@Configuration
 public class RabbitmqConfig {
 
     @Autowired
