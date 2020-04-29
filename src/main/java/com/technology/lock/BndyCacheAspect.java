@@ -13,6 +13,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Description:
@@ -38,6 +39,10 @@ public class BndyCacheAspect {
         MethodSignature signature = (MethodSignature) point.getSignature();
         // 获取练级诶单的注解信息
         BndyCache bndyCache = signature.getMethod().getAnnotation(BndyCache.class);
+
+        int timeout = bndyCache.timeout();
+        int random  = bndyCache.random();
+
         // 获取缓存的前缀
         String prefix = bndyCache.prefix();
         // 组装成key
@@ -50,7 +55,7 @@ public class BndyCacheAspect {
         }
 
         // 初始化分布式锁
-        RLock lock = this.redissonClient.getLock("bndyCache");
+        RLock lock = this.redissonClient.getLock("bndyCache" + Arrays.asList(point.getArgs()).toString());
         // 防止缓存穿透 加锁
         lock.lock();
 
@@ -65,7 +70,7 @@ public class BndyCacheAspect {
         // 2.执行查询的业务逻辑从数据库查询
         result = point.proceed(point.getArgs());
         // 并把结果放入缓存
-        this.stringRedisTemplate.opsForValue().set(key, JSON.toJSONString(result));
+        this.stringRedisTemplate.opsForValue().set(key, JSON.toJSONString(result), timeout + (int)(Math.random() * random), TimeUnit.SECONDS);
 
         // 释放锁
         lock.unlock();

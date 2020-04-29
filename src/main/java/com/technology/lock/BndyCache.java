@@ -13,4 +13,14 @@ public @interface BndyCache {
      * @return
      */
     String prefix() default "cache";
+
+    /**
+     * 过期时间秒
+     */
+    int timeout() default 3600;
+
+    /**
+     * 随机数种子,防止缓存雪崩
+     */
+    int random() default 100;
 }
